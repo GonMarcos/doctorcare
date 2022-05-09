@@ -14,10 +14,16 @@
     --paragraph: hsl(210, 9%, 31%);
     --brand-beige: hsl(39, 100%, 97%);
     --brand-light: hsl(148, 23%, 89%);
+
+    --bg-light: hsl(180, 14%, 97%);
     
 
     --nav-height: 7.2rem;
     font-size: 62.5%; /* 10px = 1rem */
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 html, body {
@@ -31,6 +37,12 @@ body {
     text-align: center;
 
     overflow: overlay;
+
+    background-color: var(--bg-light);
+}
+
+section {
+    padding-block: 10rem;
 }
 
 .wrapper {
@@ -43,122 +55,49 @@ ul {
     list-style: none;
 }
 
-/*-------------------------------HEADER----------------------------*/
-
-header {
-    margin-top: calc(4.1rem + var(--nav-height));
-
-
+img {
+    max-width: 100%;
 }
 
-header::before {
-    content: '';
-    width: 100%;
-    height: calc(108rem + var(--nav-height));
-    background-color: var(--brand-light);
-    display: block;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-header img {
-    display: block;
-    width: 26.4rem;
-    margin-inline: auto; 
-    object-position: 0 2rem;
-}
-
-
-header h4 {
+section header h4 {
+    
     font-size: 1.4rem;
     color: var(--color-primary);
+    margin-bottom: 1.6rem;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: .08rem;
 
     margin-bottom: 1.6rem;
+    text-transform: uppercase;
 }
 
-header h1 {
+section header h2 {
+    font-size: 3rem;
+    line-height: 3.9rem;
+
+    color: var(--headline);
+
+   
+
+}
+
+section header h1 {
+
     font-size: 3.4rem;
     color: var(--headline);
     line-height: 130%;
 
     margin-bottom: 2.4rem;
-}
-
-header p {
-    font-size: 1.8rem;
-    line-height: 150%;
-    color: var(--paragraph);
-
-    margin-bottom: 3.2rem;
-}
-
-header button {
-    background: var(--color-primary);
-
-    border: none;
-    border-radius: 4rem;
-
-    margin-bottom: 6.0rem;
-
-    height: 6.2rem;
-    width: 26.3rem;
-    text-transform: uppercase;
-
-    
-    color: #fff;
-    font-size: 1.4rem;
-    font-weight: 700;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.6rem;
-
-    margin-right: auto;
-    margin-left: auto;
-}
-
-#numeros {
-    margin-right: 2.4rem;
-    
-    
-    
-    width: 32.7rem;
-    
-    padding-block: 4rem;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 6rem;
-    
-    
-    background: var(--brand-beige);
-    border: solid 1px var(--brand-light);
-    border-radius: 0.6rem;
-
 
 }
 
-#numeros div h3{
-    font-size: 4.8rem;
-    line-height: 130%;
-    margin-bottom: 0.4rem;
-
-    color: var(--headline)
-
-
-}
-
-#numeros div p{
-    margin: 0;
-    line-height: 150%;
+section .contet p {
+    font-weight: 400;
     font-size: 1.6rem;
-    color: var(--color-primary);
+    line-height: 150%;
+
+    color: var(--paragraph);
 
 }
 
@@ -172,8 +111,10 @@ nav {
     
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+
+    z-index: 100;
+
+    width: 100vw;
 }
 
 nav .wrapper {
@@ -184,10 +125,10 @@ nav .wrapper {
 
 nav.scroll {
     background-color: var(--color-primary);
-    width: 100vw;
+    
 }
 
-nav.scroll svg:nth-child(1) path{
+nav.scroll .logo path{
     fill: white;
     
 }
@@ -202,6 +143,7 @@ nav button {
     cursor: pointer;
 }
 
+
 /*-----------------------------MENU-EXPANDED----------------------------*/
 .menu, .close-menu, body.menu-expanded .open-menu {
     opacity: 0;
@@ -209,7 +151,7 @@ nav button {
 }
 
 body.menu-expanded > :not(nav) { /* não mostrar o menu quando estiver aberto */
-    display: none;
+    visibility: hidden;
 }
 
 body.menu-expanded .menu, body.menu-expanded .close-menu {
@@ -221,6 +163,11 @@ body.menu-expanded {
     overflow: hidden;  /* para não ficar com scroll */
 }
 
+.menu {
+    transform: translateX(100%);
+}
+
+
 body.menu-expanded .menu {
     position: fixed;
     top: 0;
@@ -231,11 +178,12 @@ body.menu-expanded .menu {
     height: 100vh;
 
     padding-top: var(--nav-height);
+
+    transition: transform 300ms;
+    transform: translateX(0);
+    
 }
 
-body.menu-expanded nav {
-    position: relative;
-}
 
 .menu ul:nth-child(1) {
     display: flex;
@@ -296,4 +244,160 @@ body.menu-expanded .logo  path{
 
 body.menu-expanded button  path{
     stroke: white;
+}
+
+
+
+/*-------------------------------HOME----------------------------*/
+
+#home {
+    padding-top: calc(4.1rem + var(--nav-height));
+    
+
+}
+
+#home::before {
+    content: '';
+    width: 100%;
+    height: calc(108rem + var(--nav-height));
+    background-color: var(--brand-light);
+    display: block;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#home img {
+    display: block;
+    width: 26.4rem;
+    margin-inline: auto; 
+    object-position: 0 2rem;
+}
+
+
+
+
+#home p {
+    font-size: 1.8rem;
+    line-height: 150%;
+    color: var(--paragraph);
+
+    margin-bottom: 3.2rem;
+}
+
+#home button {
+    background: var(--color-primary);
+
+    border: none;
+    border-radius: 4rem;
+
+    margin-bottom: 6.0rem;
+
+    height: 6.2rem;
+    width: 26.3rem;
+    text-transform: uppercase;
+
+    
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#home .stats {
+    margin-right: 2.4rem;
+    
+    
+    
+    width: 32.7rem;
+    
+    padding-block: 4rem;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+    
+    
+    background: var(--brand-beige);
+    border: solid 1px var(--brand-light);
+    border-radius: 0.6rem;
+
+
+}
+
+#home .stats  h3{
+    font-size: 4.8rem;
+    line-height: 130%;
+    margin-bottom: 0.4rem;
+
+    color: var(--headline)
+
+
+}
+
+#home .stats  p{
+    margin: 0;
+    line-height: 150%;
+    font-size: 1.6rem;
+    color: var(--color-primary);
+
+}
+
+
+
+/*-----------------------------Services----------------------------*/
+
+
+#services h2 {
+    margin-bottom: 6rem;
+}
+
+
+#services .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+#services .card {
+    padding: 2.4rem;
+    text-align: left;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--brand-light);
+    border-radius: .6rem;
+    box-sizing: border-box; /* vai medir a partir da caixa e não do conteúdo*/
+}
+
+#services .card  h3{
+
+    margin-block: 1.6rem;
+
+}
+
+/*-----------------------------About----------------------------*/
+#about {
+    text-align: left;
+    background-color: var(--brand-beige);
+}
+
+#about header h2 {
+    margin-bottom: 2.4rem;
+}
+
+#about .content p {
+    margin-top: 2.4rem;
+    margin-bottom: 6rem;
 }

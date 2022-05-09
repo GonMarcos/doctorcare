@@ -22,3 +22,23 @@ function closeMenu() {
     
         document.body.classList.remove('menu-expanded')
 }
+
+
+
+ScrollReveal({
+
+    origin: 'left',
+    distance: '30px',
+    duration: 800,
+
+}).reveal(`
+    #home,
+    #home img,
+    #home .stats,
+    #services,
+    #services header,
+    #services .cards,
+    #about,
+    #about header,
+    #about .content`);
+
